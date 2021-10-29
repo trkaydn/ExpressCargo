@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Express Kargo - Hakkımızda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-bg" id="call-to-action" style="background-image: url(/assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Biz Kimiz?  <em>Hakkımızda</em></h2>
+                    <p>Bu proje Kodluyoruz Ankara C# ile .Net Core Bootcamp bitirme projesi olarak <a href="https://www.linkedin.com/in/trkaydn/">Tarık Aydın</a> tarafından Ekim 2021 tarihinde hazırlanmıştır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="our-classes">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-12">
+                <section class='tabs-content'>
+                    <img src="/assets/images/bootcamp.png" alt="">
+                    <h4 class="text-center">Express Kargo Hakkında</h4>
+
+                    <p>Bu proje Kodluyoruz K130 Ankara C# ile .Net Core Bootcamp bitirme projesi olarak Tarık Aydın tarafından Ekim 2021 tarihinde hazırlanmıştır.</p>
+
+                    <p>Express Kargo, Asp.Net Core 5.0 MVC ile geliştirilmiş bir kargo otomasyonudur. Bu projede EntityFramework, FluentValidation, AutoMapper kütüphaneleri kullanılmıştır.</p>
+
+                    <p>
+                        <strong>Kullanım Senaryosu:</strong><br />
+                        Kargo Şubeleri, şube adları ve şifreleri ile sisteme giriş yaparlar. Giriş yaptıktan sonra yeni kargo kabulü, var olan kargoların durumunu güncelleyebilme yetkilerine sahiptirler.
+                        Her yeni kargo girişinde 12 haneli random bir takip numarası oluşturulmaktadır. Kargoların güncellenme aşamaları ise tarih bilgisi ile birlikte veritabanına tek tek kaydedilmekte olup,
+                        geçilen bir aşamadan geriye dönük güncelleme mümkün değildir. Her şube sadece göndericisi veya alıcısı olduğu kargolar üzerinde görüntüleme ve güncelleme yetkisine sahiptir.
+                        Tüm şubeler, iletişim sayfasından iletilen mesajları okuyabilir ve silebilir, buna ek olarak siteye yapılan yorumları onaylama ve silme, şifre değiştirme yetkilerine sahiptir.
+                        Herkese açık arayüzde ise kullanıcılar kargo takip numaraları ile takip işlemlerini yapabilir, firmamıza yorum bırakabilir, iletişim formuyla bilgi edinebilirler.
+                    </p>
+
+                    <p>
+                        <strong>Teknik Detaylar:</strong><br />
+                        Bu proje Asp.Net Core 5.0 MVC ile 4 katmanlı mimari üzerine kurulmuştur. EntityLayer, DataAccessLayer, BusinessLayer ve PresentationLayer katmanlarından oluşmaktadır.
+                        Veritabanı işlemleri için EntityFramework ile code first yaklaşımı kullanılmıştır. Kullanıcıdan alınan tüm girdiler FluentValidation kütüphanesi ile validasyon kontrolünden geçmektedir.
+                        View'larda entity kullanılmamıştır. Her view için ViewModel yazılmış olup bu ViewModeller AutoMapper kütüphanesi kullanılarak entitylere maplenmiştir. Kullanıcı
+                        şifreleri veritabanında SHA512 algoritması ile hashlenmiş olarak tutulmaktadır. Runtime esnasında karşılaşılan hatalar Middleware yardımıyla veritabanına kayıt edilmektedir.
+                        Bu hatalar yönetici panelinde liste olarak görülebilmektir. Frontend tarafında hazır template kullanılmış olup, ajax işlemleri için tarafımca birkaç script yazılmıştır.
+                    </p>
+
+                    <p>
+                        <strong>İletişim Bilgilerim:</strong><br />
+                        <a href="https://www.linkedin.com/in/trkaydn/" target="_blank">LinkedIn Profilim</a><br />
+                        <a href="https://github.com/trkaydn">GitHub Profilim</a><br />
+                        <a href="https://www.hackerrank.com/tarikayydin1846">HackerRank Profilim</a><br />
+                        <a href="mailto:tarikayydin1846@gmail.com">tarikayydin1846@gmail.com</a>
+                    </p>
+
+                </section>
+                <ul class="text-center">
+                    <li><a href='https://www.linkedin.com/in/trkaydn/'><i class="fa fa-briefcase"></i>Tarık Aydın</a></li>
+                    <li><a href='https://kodluyoruz.org/' target="_blank"><i class="fa fa-heart"></i> Kodluyoruz</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Bize bir <em>mesaj</em> bırak</h2>
+                    <p>İletişim formunu doldurarak mesaj bırakabilirsiniz.</p>
+                    <div class="main-button">
+                        <a href="@Url.Action("Index","Contact")">Bize Ulaşın</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

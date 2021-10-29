@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="tr">
+<head>
+    <title>Express Kargo - Şube Girişi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/login-page/css/style.css">
+
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img" style="background-image: url(/login-page/images/loginimage.jpg);">
+                        </div>
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    <h3 class="mb-4"><a href="@Url.Action("Index","Home")">Express Kargo</a> Şube Girişi</h3>
+                                </div>
+                                <div class="w-100">
+                                    <p class="social-media d-flex justify-content-end">
+                                        <a href="https://www.facebook.com/tarik1846/" target="_blank" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                        <a href="https://twitter.com/_trkaydn_" target="_blank" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                            <form method="post" class="signin-form">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Şube Adı</label>
+                                    <input type="text" name="LoginName" class="form-control" placeholder="Şube Adı">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label" for="password">Şifre</label>
+                                    <input type="password" name="Password" class="form-control" placeholder="Şifre">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Giriş Yap</button>
+                                </div>
+                                @if (ViewBag.LoginMessage != null)
+                                {
+                                    <div class="alert alert-danger text-center">
+                                        @ViewBag.LoginMessage
+                                    </div>
+                                }
+                            </form>                      
+                            <p class="text-center">&copy; 2021 - Express Kargo - <a href="https://www.linkedin.com/in/trkaydn/" target="_blank">Tarık Aydın</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/login-page/js/jquery.min.js"></script>
+    <script src="~/login-page/js/popper.js"></script>
+    <script src="~/login-page/js/bootstrap.min.js"></script>
+    <script src="~/login-page/js/main.js"></script>
+
+</body>
+</html>
+

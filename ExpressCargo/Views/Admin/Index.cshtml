@@ -1,0 +1,168 @@
+﻿@model AdminVM
+@{
+    ViewData["Title"] = "Express Kargo - Şube İşlemleri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="dashboard-cards">
+    <div class="row">
+        <h1 class="text-center">Express Kargo Şube İşlemleri</h1><hr />
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <a href="/AdminOrder/Index/1">
+
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image red">
+                        <i class="material-icons dp48">call_made</i>
+                    </div>
+                    <div class="card-stacked red">
+                        <div class="card-content">
+                            <h3>Sevk Bekleyenler</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>@Model.Waiting</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <a href="/AdminOrder/Index/2">
+
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image orange">
+                        <i class="material-icons dp48">swap_vertical_circle</i>
+                    </div>
+                    <div class="card-stacked orange">
+                        <div class="card-content">
+                            <h3>Yola Çıktı</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>@Model.OnRoad</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <a href="/AdminOrder/Index/3">
+
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image blue">
+                        <i class="material-icons dp48">business</i>
+                    </div>
+                    <div class="card-stacked blue">
+                        <div class="card-content">
+                            <h3>Varış Şubesinde</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>@Model.OnArrival</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <a href="/AdminOrder/Index/5">
+
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image green">
+                        <i class="material-icons dp48">done</i>
+                    </div>
+                    <div class="card-stacked green">
+                        <div class="card-content">
+                            <h3>Teslim Edildi</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>@Model.Completed</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="@Url.Action("Index","CreateOrder")">
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image blue-grey">
+                        <i class="material-icons dp48">assignment</i>
+                    </div>
+                    <div class="card-stacked blue-grey">
+                        <div class="card-content">
+                            <h3>Yeni Kargo Girişi</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>Yeni bir kayıt yapmak için tıklayın.</strong>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="/AdminOrder/Index/">
+                <div class="card horizontal cardIcon waves-effect waves-dark">
+                    <div class="card-image purple">
+                        <i class="material-icons dp48">mode_edit</i>
+                    </div>
+                    <div class="card-stacked purple">
+                        <div class="card-content">
+                            <h3>Tüm Kargolar</h3>
+                        </div>
+                        <div class="card-action">
+                            <strong>@Model.All</strong>
+                        </div>
+                    </div>
+                </div>
+                </a>
+        </div>
+    </div>
+    <div class="row">
+        <br /><br />
+        <h1 class="text-center">Son Mesajlar</h1><hr />
+        @foreach (var item in Model.LastContacts)
+        {
+            <div class="col-md-4 col-sm-4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">@item.FirstName @item.LastName</span>
+                        <p>
+                            @item.Message
+                        </p>
+                        <br />
+                        <sub style="float:right;">@item.ContactDate.ToString("dd.MM.yyyy HH:mm")</sub>
+                    </div>
+                    <div class="card-action">
+                        <p>İletişim Adresi: @item.ContactMail</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a href="@Url.Action("Index","AdminContact")" class="btn btn-primary btn-block">Tümünü Gör</a>
+
+    <div class="row">
+        <br /><br />
+        <h1 class="text-center">Son Yorumlar</h1><hr />
+        @foreach (var item in Model.LastComments)
+        {
+            <div class="col-md-4 col-sm-4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">@item.FirstName @item.LastName</span>
+                        <p>
+                            @item.CommentContent
+                        </p>
+                        <br />
+                        <sub style="float:right;">@item.CommentDate.ToString("dd.MM.yyyy HH:mm")</sub>
+                    </div>
+                    <div class="card-action">
+                        <p>Durum: @((item.IsActive) ? "Onaylı": "Onay Bekliyor")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a href="@Url.Action("Index","AdminComment")" class="btn btn-primary btn-block">Tümünü Gör</a>
+</div>
+

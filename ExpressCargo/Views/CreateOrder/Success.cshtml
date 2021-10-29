@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Express Kargo - Kayıt Başarılı";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card text-center">
+            <br />
+            <h2 class="text-success">Kargo Kaydı Başarıyla Tamamlandı</h2>
+            <hr />
+            <div class="alert alert-success mt-3">
+                <h4>
+                    Lütfen aşağıdaki takip numarasını müşteri ile paylaşınız.
+                </h4><br />
+                <h1>
+                    Takip Numarası: <bold>@TempData["TrackNumber"]</bold>
+                </h1>
+                <br />
+            </div>
+            <a href="@Url.Action("Index","CreateOrder")" class="btn btn-success">Yeni Kayıt Gir</a>
+            <a href="@Url.Action("Index","Admin")" class="btn btn-primary">Ana Sayfaya Dön</a>
+             <br /><br />
+        </div>
+    </div>
+</div>

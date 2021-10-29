@@ -1,0 +1,30 @@
+﻿@model List<AdminContactVM>
+@{
+    ViewData["Title"] = "Express Kargo - Gelen Kutusu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Gelen Kutusu</h2>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-content">
+                    <a href="/AdminContact/Remove/@item.ContactID" class="btn btn-danger" style="float:right;">X</a>
+                    <span class="card-title">@item.FirstName @item.LastName</span>
+                    <p>
+                        @item.Message
+                    </p>
+                    <br />
+                    <sub style="float:right;">@item.ContactDate.ToString("dd.MM.yyyy HH:mm")</sub>
+                </div>
+                <div class="card-action">
+                    <p>İletişim Adresi: @item.ContactMail</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

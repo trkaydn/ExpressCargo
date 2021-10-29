@@ -1,0 +1,250 @@
+﻿@using System.Security.Claims
+@{
+    Layout = null;
+    var username = User.FindFirstValue(ClaimTypes.Name);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/admin/assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <link href="~/admin/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/admin/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/admin/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/admin/assets/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/admin/assets/js/Lightweight-Chart/cssCharts.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="@Url.Action("Index","Admin")"><i class="large material-icons">track_changes</i> <strong>Express Kargo</strong></a>
+
+                <div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a class="waves-effect waves-dark" href="@Url.Action("Index","AdminComment")"><i class="fa fa-comment fa-fw"></i>Yorumlar</a></li>
+                <li><a class="waves-effect waves-dark" href="@Url.Action("Index","AdminContact")"><i class="fa fa-envelope fa-fw"></i>Mesajlar</a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i><b>@username</b><i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li>
+                <a href="@Url.Action("ChangePassword","Admin")"><i class="fa fa-gear fa-fw"></i> Şifre Değiştir</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out fa-fw"></i> Çıkış Yap</a>
+            </li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content w250">
+            <li>
+                <div>
+                    <i class="fa fa-comment fa-fw"></i> New Comment
+                    <span class="pull-right text-muted small">4 min</span>
+                </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <div>
+                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                    <span class="pull-right text-muted small">12 min</span>
+                </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <div>
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                    <span class="pull-right text-muted small">4 min</span>
+                </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <div>
+                    <i class="fa fa-tasks fa-fw"></i> New Task
+                    <span class="pull-right text-muted small">4 min</span>
+                </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <div>
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                    <span class="pull-right text-muted small">4 min</span>
+                </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <ul id="dropdown3" class="dropdown-content dropdown-tasks w250">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 1</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 2</strong>
+                            <span class="pull-right text-muted">28% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
+                                <span class="sr-only">28% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 3</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 4</strong>
+                            <span class="pull-right text-muted">85% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                <span class="sr-only">85% Complete (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+        </ul>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu waves-effect waves-dark" href="@Url.Action("Index","Admin")"><i class="fa fa-bar-chart-o"></i> Şube İşlemleri</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","CreateOrder")" class="waves-effect waves-dark"><i class="fa fa-plus"></i> Yeni Kargo Girişi</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-align-left"></i> Kargolar<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/AdminOrder/Index/">Tüm Kargolar</a>
+                            </li>
+                            <li>
+                                <a href="/AdminOrder/Index/1">Sevk Bekleyenler</a>
+                            </li>
+                            <li>
+                                <a href="/AdminOrder/Index/2">Yola Çıkanlar</a>
+                            </li>
+                            <li>
+                                <a href="/AdminOrder/Index/3">Varış Şubesindekiler</a>
+                            </li>
+                            <li>
+                                <a href="/AdminOrder/Index/5">Teslim Edilenler</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","AdminContact")" class="waves-effect waves-dark"><i class="fa fa-comment"></i> Mesajlar</a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","AdminComment")" class="waves-effect waves-dark"><i class="fa fa-comments"></i> Müşteri Yorumları</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","AdminError")" class="waves-effect waves-dark"><i class="fa fa-fw fa-exclamation-circle"></i> Hata Logları </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ChangePassword","Admin")" class="waves-effect waves-dark"><i class="fa fa-edit"></i> Şifre Değiştir </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Home")" target="_blank" class="waves-effect waves-dark"><i class="fa fa-fw fa-file"></i> Siteye Git</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out fa-fw"></i> Çıkış Yap</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="page-header"></div>
+
+            <div id="page-inner">
+                @RenderBody()
+            </div>
+
+            <footer class="text-center">
+                &copy; 2021 - Express Kargo - <a href="https://www.linkedin.com/in/trkaydn/" target="_blank">Tarık Aydın</a>
+            </footer>
+        </div>
+    </div>
+    <script src="~/assets/js/jquery-2.1.0.min.js"></script>
+    <script src="~/admin/assets/js/bootstrap.min.js"></script>
+    <script src="~/admin/assets/materialize/js/materialize.min.js"></script>
+    <script src="~/admin/assets/js/jquery.metisMenu.js"></script>
+    <script src="~/admin/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/admin/assets/js/morris/morris.js"></script>
+    <script src="~/admin/assets/js/easypiechart.js"></script>
+    <script src="~/admin/assets/js/easypiechart-data.js"></script>
+    <script src="~/admin/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+    <script src="~/admin/assets/js/custom-scripts.js"></script>
+</body>
+
+</html>

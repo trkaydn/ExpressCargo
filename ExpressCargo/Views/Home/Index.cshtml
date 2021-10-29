@@ -1,0 +1,211 @@
+﻿@model List<CommentVM>
+@{
+    ViewData["Title"] = "Express Kargo";
+}
+
+<div class="main-banner" id="top">
+    <video autoplay muted loop id="bg-video">
+        <source src="/assets/images/bgvideo.mp4" type="video/mp4" />
+    </video>
+
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>Express Kargo</h6>
+            <h2><em>Kargo</em> Takibi</h2>
+            <div class="contact-form section-bg" style="width:50%;margin-left:25%">
+                @using (Html.BeginForm("Index", "Track", FormMethod.Get))
+                {
+                    <input name="trackNumber" type="text" placeholder="Takip Numaranızı Giriniz..." />
+                    @if (TempData["TrackMessage"] != null)
+                    {
+                        <h6 class="text-danger mb-3">@TempData["TrackMessage"]</h6>
+                    }
+                    <button type="submit" class="mb-3">Sorgula</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section" id="trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>7/24 <em>Güvenli </em>Hizmet</h2>
+                    <img src="/assets/images/line-dec.png" alt="">
+                    <p>Türkiyenin 81 ilindeki şubelerimizle en iyi hizmeti vermek için çabalıyoruz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="/assets/images/image1.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>
+                        </span>
+
+                        <h4>Ekspress Kargo ile her yere kargo!</h4>
+
+                        <p>
+                            <i class="fa fa-calendar"></i> Hızlı &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-cube"></i> Koli(Küçük) &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-plane"></i> Hava Yolu &nbsp;&nbsp;&nbsp;
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="/assets/images/image2.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>
+                        </span>
+
+                        <h4>En hızlı ve güvenilir hizmet bizde!</h4>
+
+                        <p>
+                            <i class="fa fa-calendar"></i> Kaliteli &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-cube"></i> Zarf &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-car"></i> Kara Yolu &nbsp;&nbsp;&nbsp;
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="trainer-item">
+                    <div class="image-thumb">
+                        <img src="/assets/images/image3.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>
+                        </span>
+
+                        <h4>Eşyalarınızı özenle ve sigorta dahilinde taşıyoruz!</h4>
+
+                        <p>
+                            <i class="fa fa-calendar"></i> Güvenilir &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-cube"></i> Koli(Büyük) &nbsp;&nbsp;&nbsp;
+
+                            <i class="fa fa-ship"></i> Deniz Yolu &nbsp;&nbsp;&nbsp;
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+    </div>
+</section>
+<section class="section section-bg" id="schedule" style="background-image: url(/assets/images/about-fullscreen.jpeg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading dark-bg">
+                    <h2>Express <em>Kargo</em> Hakkımızda</h2>
+                    <img src="/assets/images/line-dec.png" alt="">
+                    <p>Bu proje Kodluyoruz Ankara C# ile .Net Core Bootcamp bitirme projesi olarak <a href="https://www.linkedin.com/in/trkaydn/">Tarık Aydın</a> tarafından Ekim 2021 tarihinde hazırlanmıştır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-content text-center">
+                    <p>Express Kargo, Asp.Net Core 5.0 MVC ile geliştirilmiş bir kargo otomasyonudur. Bu projede EntityFramework, FluentValidation kütüphaneleri kullanılmıştır.</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-button text-center">
+            <a href="@Url.Action("Index","About")">Devamını Oku</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Müşteri <em>Yorumları</em></h2>
+                    <img src="/assets/images/line-dec.png" alt="waves">
+                    <p>Müşterilerimizden gelen olumlu veya olumsuz her türlü mesajı sayfamızda yayınlıyoruz.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ul class="features-items">
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="/assets/images/features-first-icon.png" alt="First One">
+                            </div>
+                            <div class="right-content">
+                                <h4>@(Model[i].FirstName + " " +Model[i].LastName)</h4>
+                                <p><em>@Model[i].CommentContent</em></p>
+                                <p>@Model[i].CommentDate.ToString("dd.MM.yyyy")</p>
+                            </div>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <ul class="features-items">
+                    @for (int i = 2; i < 4; i++)
+                    {
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="/assets/images/features-first-icon.png" alt="First One">
+                            </div>
+                            <div class="right-content">
+                                <h4>@(Model[i].FirstName + " " +Model[i].LastName)</h4>
+                                <p><em>@Model[i].CommentContent</em></p>
+                            </div>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="main-button text-center">
+            <a href="@Url.Action("Index","Comment")">Tümünü Gör</a>
+        </div>
+    </div>
+</section>
+<section class="section section-bg" id="call-to-action" style="background-image: url(/assets/images/cargo-insurance.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <h2>Bize bir<em> yorum </em>bırak</h2>
+                    <p>Öneri, tavsiye ve görüşlerinize her zaman açığız.</p>
+                    <div class="main-button">
+                        <a href="@Url.Action("Index","Comment")"> Yorum Yaz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

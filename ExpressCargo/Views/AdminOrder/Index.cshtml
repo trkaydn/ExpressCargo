@@ -1,0 +1,60 @@
+﻿@model List<AdminOrderVM>
+@{
+    ViewData["Title"] = "Express Kargo - Kargolar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <h2 class="text-center">@ViewBag.Header</h2><hr />
+    <div class="col-lg-12">
+        <div class="card">
+            @if (TempData["OrderMessage"] != null)
+            {
+                <div class="alert alert-success mt-3 text-center">
+                    @TempData["OrderMessage"]
+                </div>
+            }
+            <div class="card-action">
+                @ViewBag.Header
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Takip Numarası</th>
+                                <th>Gönderici</th>
+                                <th>Alıcı</th>
+                                <th>Gönderim Adresi</th>
+                                <th>Gönderi Türü</th>
+                                <th>Ücret</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.TrackNumber</td>
+                                    <td>@item.SenderName</td>
+                                    <td>@item.ReceiverName</td>
+                                    <td>@item.ShippingAddress @item.ReceiverDistrict.DistrictName / @item.ReceiverDistrict.City.CityName</td>
+                                    <td>@item.Size.SizeName</td>
+                                    <td>@item.Price ₺</td>
+                                    <td>
+                                        @item.Status.StatusName
+                                        <a href="@Url.Action("Index","Track",new { trackNumber=item.TrackNumber })" class="btn btn-success" target="_blank" style="float:right;"><i class="fa fa-calendar"></i></a>
+                                        @if (item.StatusID != 5)
+                                        {<a href="/AdminOrder/Edit/@item.OrderID" class="btn btn-warning" style="float:right;margin-right:2%"><i class="fa fa-edit"></i></a>}
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

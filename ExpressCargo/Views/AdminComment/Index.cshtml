@@ -1,0 +1,36 @@
+﻿@model List<AdminCommentVM>
+@{
+    ViewData["Title"] = "Express Kargo - Müşteri Yorumları";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Müşteri Yorumları</h2>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-6">
+            <div class="card">
+                <div class="card-content">
+                    <a href="/AdminComment/Remove/@item.CommentID" class="btn btn-danger" style="float:right;">X</a>
+                    <span class="card-title">@item.FirstName @item.LastName</span>
+                    <p>
+                        @item.CommentContent
+                    </p>
+                    <br />
+                    <sub style="float:right;">@item.CommentDate.ToString("dd.MM.yyyy HH:mm")</sub>
+                </div>
+                <div class="card-action">
+                    <p>Durum: @((item.IsActive) ? "Onaylı": "Onay Bekliyor")</p>
+                    @if (!item.IsActive)
+                    {
+                        <a href="/AdminComment/ChangeStatus/@item.CommentID" class="btn btn-success">Onayla</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

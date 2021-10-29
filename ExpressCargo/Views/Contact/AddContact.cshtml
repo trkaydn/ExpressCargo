@@ -1,0 +1,84 @@
+﻿@model ContactVM
+<div class="contact-form section-bg" style="background-image: url(assets/images/contact-1-720x480.jpg)">
+    @if (TempData["ContactMessage"] == null)
+    {
+        <form id="contact" action="javascript:void(0);">
+            <div class="row ml-1 mb-3">
+                <h5 style="color:black">İletişim Formu</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.FirstName, new { placeholder = "Adınız*", @class = "mb-3", id = "firstName" })
+                        @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger", })
+                    </fieldset>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.LastName, new { placeholder = "Soyadınız*", @class = "mb-3", id = "lastName" })
+                        @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+                    </fieldset>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <fieldset>
+                        @Html.TextBoxFor(x => x.ContactMail, new { placeholder = "E-Posta*", @class = "mb-3", id = "contactMail" })
+                        @Html.ValidationMessageFor(x => x.ContactMail, "", new { @class = "text-danger" })
+                    </fieldset>
+                </div>
+                <div class="col-lg-12">
+                    <fieldset>
+                        @Html.TextAreaFor(x => x.Message, new { placeholder = "Mesaj*", @class = "mb-3", id = "message" })
+                        @Html.ValidationMessageFor(x => x.Message, "", new { @class = "text-danger" })
+                    </fieldset>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <fieldset>
+                        <button id="submitForm" class="main-button">Mesaj Gönder</button>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form id="contact" action="javascript:void(0);">
+            <div class="alert alert-success mt-3">
+                @TempData["ContactMessage"]
+                <br />
+                <button id="clear" class="main-button mt-2">Yeni Mesaj Gönder</button>
+            </div>
+        </form>
+    }
+</div>
+<script src="~/assets/js/jquery-2.1.0.min.js"></script>
+<script>
+
+    $("#submitForm").on("click", function () {
+        var contact = {
+            FirstName: $("#firstName").val(),
+            LastName: $("#lastName").val(),
+            ContactMail: $("#contactMail").val(),
+            Message: $("#message").val(),
+        }
+
+        $.ajax({
+            type: 'Post',
+            url: '/Contact/AddContact/',
+            data: { "contact": contact },
+            success: function (result) {
+                $("#partialDiv").html(result);
+            }
+        })
+    });
+
+    $("#clear").on("click", function () {
+        $.ajax({
+            type: 'Get',
+            url: '/Contact/AddContact/',
+            success: function (result) {
+                $("#partialDiv").html(result);
+            }
+        })
+    });
+</script>

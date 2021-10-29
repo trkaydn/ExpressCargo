@@ -1,0 +1,130 @@
+﻿@model CreateOrderVM
+@{
+    ViewData["Title"] = "Express Kargo - Yeni Kargo Girişi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center">Yeni Kargo Girişi</h2>
+<hr />
+
+<div class="row">
+    @using (Html.BeginForm("Index", "CreateOrder", FormMethod.Post))
+    {
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-action">
+                    Gönderici Bilgileri
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            @Html.TextBoxFor(x => x.SenderName, new { @class = "validate" })
+                            @Html.ValidationMessageFor(x => x.SenderName, "", new { @class = "text-danger", })
+
+                            <label for="icon_prefix">Adı Soyadı</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            @Html.TextBoxFor(x => x.SenderPhone, new { @class = "validate" })
+                            @Html.ValidationMessageFor(x => x.SenderPhone, "", new { @class = "text-danger", })
+                            <label for="icon_telephone">Telefon Numarası</label>
+                        </div>
+                    </div>
+
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-action">
+                    Kargo Bilgileri
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            @Html.DropDownListFor(x => x.SizeID, (List<SelectListItem>)Model.Sizes, "Bir boyut seçin.", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.SizeID, "", new { @class = "text-danger", })
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">
+                                assessment
+                            </i>
+                            @Html.TextBoxFor(x => x.Price, new { @class = "validate" })
+                            <label for="icon_telephone">Toplam Tutar (₺)</label>
+                        </div>
+                    </div>
+
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-action">
+                    Alıcı Bilgileri
+                </div>
+                <div class="card-content">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            @Html.TextBoxFor(x => x.ReceiverName, new { @class = "validate" })
+                            @Html.ValidationMessageFor(x => x.ReceiverName, "", new { @class = "text-danger", })
+
+                            <label for="icon_prefix">Adı Soyadı</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            @Html.TextBoxFor(x => x.ReceiverPhone, new { @class = "validate" })
+                            @Html.ValidationMessageFor(x => x.ReceiverPhone, "", new { @class = "text-danger", })
+                            <label for="icon_telephone">Telefon Numarası</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            @Html.DropDownListFor(x => x.City, (List<SelectListItem>)Model.Cities, "Bir şehir seçin.", new { @class = "form-control", id = "selectCity" })
+                            @Html.ValidationMessageFor(x => x.ReceiverDistrictID, "", new { @class = "text-danger", })
+                        </div>
+                        <div class="input-field col s6">
+                            <select class="form-control" name="ReceiverDistrictID" id="selectDistrict">
+                                <option value="0">Bir ilçe seçin.</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.TextAreaFor(x => x.ShippingAddress, new { @class = "materialize-textarea" })
+                            @Html.ValidationMessageFor(x => x.ShippingAddress, "", new { @class = "text-danger", })
+                            <label for="textarea1" class="">Açık Adres</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-large text-center" style="float:right;"><i class="material-icons left">done</i>Kaydet</button>
+
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/assets/js/jquery-2.1.0.min.js"></script>
+<script>
+    $("#selectCity").on("change", function () {
+
+        $("#selectDistrict option").remove();
+        var cityId = $(this).val();
+        $.ajax({
+            type: 'Get',
+            url: '/CreateOrder/GetDistricts/',
+            dataType: 'Json',
+            data: { "cityId": cityId },
+            success: function (result) {
+                $.each(result, function (index, value) {
+                    row = '<option value="' + value.value + '">' + value.text + '</option>';
+                    $("#selectDistrict").append(row);
+
+                });
+            }
+        })
+    });
+</script>

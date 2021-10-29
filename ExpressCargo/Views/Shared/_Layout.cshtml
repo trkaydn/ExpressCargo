@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+</head>
+
+<body>
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="@Url.Action("Index","Home")" class="logo">Express<em> Kargo</em></a>
+
+                        <ul class="nav">
+                            <li><a href="@Url.Action("Index","Home")" class="active">Ana Sayfa</a></li>
+                            <li><a href="@Url.Action("Index","Comment")">Yorumlar</a></li>
+                            <li><a href="@Url.Action("Index","Contact")">İletişim</a></li>
+                            <li><a href="@Url.Action("Index","About")">Hakkımızda</a></li>
+                            <li><a href="@Url.Action("Index","Admin")">Şube İşlemleri</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menü</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Express Kargo - <a href="https://www.linkedin.com/in/trkaydn/" target="_blank">Tarık Aydın</a>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery-2.1.0.min.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/scrollreveal.min.js"></script>
+    <script src="/assets/js/waypoints.min.js"></script>
+    <script src="/assets/js/jquery.counterup.min.js"></script>
+    <script src="/assets/js/imgfix.min.js"></script>
+    <script src="/assets/js/mixitup.js"></script>
+    <script src="/assets/js/accordions.js"></script>
+    <script src="/assets/js/custom.js"></script>
+</body>
+</html>

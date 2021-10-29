@@ -1,0 +1,52 @@
+﻿@model List<CommentVM>
+@{
+    ViewData["Title"] = "Express Kargo - Müşteri Yorumları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Müşteri <em>Yorumları</em></h2>
+                    <p>
+                        Öneri, tavsiye ve görüşlerinize her zaman açığız.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-2">
+    <section class="tabs-content">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Müşteri Yorumları</h4>
+                <hr />
+                <ul class="features-items">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="feature-item" style="margin-bottom:15px;">
+                                <div class="left-icon">
+                                    <img src="assets/images/features-first-icon.png" alt="First One">
+                                </div>
+                                <div class="right-content">
+                                    <h4>@(item.FirstName + " " + item.LastName)</h4>
+                                    <p><em>@item.CommentContent</em><br />@item.CommentDate.ToString("dd.MM.yyyy")</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-md-4" id="partialDiv">
+                @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new CommentVM())
+            </div>
+        </div>
+    </section>
+</div>
