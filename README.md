@@ -2,7 +2,7 @@
 
 Bu proje [Kodluyoruz](https://kodluyoruz.org/) K130 Ankara C# ile .Net Core Bootcamp bitirme projesi olarak [Tarık Aydın](https://www.linkedin.com/in/trkaydn/) tarafından Ekim 2021 tarihinde hazırlanmıştır.
 
-Express Kargo, Asp Net Core 5.0 MVC ile geliştirilmiş bir kargo otomasyonudur. Bu projede **EntityFramework, FluentValidation, AutoMapper** kütüphaneleri kullanılmıştır.
+Express Kargo, Asp.Net Core 5.0 MVC ile geliştirilmiş bir kargo otomasyonudur. Bu projede **EntityFramework, FluentValidation, AutoMapper** kütüphaneleri kullanılmıştır.
 
 
 ## Kullanım Senaryosu
@@ -20,7 +20,7 @@ Herkese açık arayüzde ise kullanıcılar kargo takip numaraları ile takip i�
 
 ![AdminUI](./ExpressCargo/wwwroot/images/img2.gif)
 
-Bu proje **Asp Net Core 5.0 MVC** ile **4 katmanlı mimari** üzerine kurulmuştur. **EntityLayer, DataAccessLayer, BusinessLayer** ve **PresentationLayer** katmanlarından oluşmaktadır.
+Bu proje **Asp.Net Core 5.0 MVC** ile **4 katmanlı mimari** üzerine kurulmuştur. **EntityLayer, DataAccessLayer, BusinessLayer** ve **PresentationLayer** katmanlarından oluşmaktadır.
 
 Veritabanı işlemleri için **EntityFramework** ile **Code First** yaklaşımı kullanılmıştır. Kullanıcıdan alınan tüm girdiler **FluentValidation** kütüphanesi ile validasyon kontrolünden geçmektedir.
 
