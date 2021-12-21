@@ -1,5 +1,7 @@
 # Express Cargo
 
+![certificate](./11535936809272.png)
+
 Bu proje [Kodluyoruz](https://kodluyoruz.org/) K130 Ankara C# ile .Net Core Bootcamp bitirme projesi olarak [Tarık Aydın](https://www.linkedin.com/in/trkaydn/) tarafından Ekim 2021 tarihinde hazırlanmıştır.
 
 Express Kargo, Asp.Net Core 5.0 MVC ile geliştirilmiş bir kargo otomasyonudur. Bu projede **EntityFramework, FluentValidation, AutoMapper** kütüphaneleri kullanılmıştır.
